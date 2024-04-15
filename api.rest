@@ -24,3 +24,20 @@ GET http://localhost:8080/produto
 GET http://localhost:8080/produto/1
 
 ###
+
+PUT http://localhost:8080/produto/1
+Content-Type: application/json
+
+{
+    "nome": "Cerveja Puro Malte",
+    "preco": 5.20,
+    "tipo": "Bebidas Alcoólicas",
+    "descricao": "Unidade",
+    "modelo": "350ml Lata",
+    "marca": "Becks"
+}
+
+###
+DELETE http://localhost:8080/produto/1
+
+###
