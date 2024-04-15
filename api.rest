@@ -13,3 +13,14 @@ Content-Type: application/json
     "modelo": "350ml Lata",
     "marca": "Becks"
 }
+
+###
+
+GET http://localhost:8080/produto
+
+
+###
+
+GET http://localhost:8080/produto/1
+
+###
