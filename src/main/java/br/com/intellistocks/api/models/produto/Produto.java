@@ -30,4 +30,6 @@ public class Produto {
     private String modelo;
 
     private String marca;
+
+    private Boolean ativo = true;
 }
