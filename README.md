@@ -1,6 +1,15 @@
-## Gestão de Estoque e Vendas
+## IntelliStocks
 
-O software IntelliStocks é uma solução inovadora de gerenciamento de inventário que utiliza aprendizado de máquina e análise de dados para antecipar demandas, otimizar estoques e automatizar reabastecimentos. Com uma interface intuitiva, oferece insights valiosos para tomada de decisões informadas, impulsionando a eficiência operacional e a competitividade das empresas.
+O software IntelliStocks é uma solução inovadora de gerenciamento de inventário que utiliza aprendizado de máquina e análise de dados para antecipar demandas, otimizar estoques e automatizar reabastecimentos. Com uma interface intuitiva, oferece insights valiosos para tomada de decisões informadas, impulsionando a eficiência operacional e a competitividade das empresas. Confira o vídeo do pitch do nosso projeto no link abaixo: <br> https://youtu.be/lpCFoGbBxmY
+
+### Após rodar o projeto teste os endpoints usando o arquivo "api.rest", disponivel ao utilizar a extensão REST CLIENT no VS CODE 
+
+### Grupo: Gustavo Monte RM 551601, Igor Luiz RM 99809, Lucas Lima RM 551253, Murilo Caumo RM 551247 e Pedro Henrique RM 551598
+
+## Diagrama
+
+![Texto Alternativo](Intellistocks.png)
+
 
 ## Tarefas
 
