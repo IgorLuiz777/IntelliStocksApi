@@ -1,10 +1,15 @@
-## IntelliStocks
+# IntelliStocks
 
 O software IntelliStocks é uma solução inovadora de gerenciamento de inventário que utiliza aprendizado de máquina e análise de dados para antecipar demandas, otimizar estoques e automatizar reabastecimentos. Com uma interface intuitiva, oferece insights valiosos para tomada de decisões informadas, impulsionando a eficiência operacional e a competitividade das empresas. Confira o vídeo do pitch do nosso projeto no link abaixo: <br> https://youtu.be/lpCFoGbBxmY
 
 ### Após rodar o projeto teste os endpoints usando o arquivo "api.rest", disponivel ao utilizar a extensão REST CLIENT no VS CODE 
 
-### Grupo: Gustavo Monte RM 551601, Igor Luiz RM 99809, Lucas Lima RM 551253, Murilo Caumo RM 551247 e Pedro Henrique RM 551598
+## Grupo:
+### Gustavo Monte RM 551601 - COMPLIANCE, QUALITY ASSURANCE & TESTS | Mobile Application Development
+### Igor Luiz RM 99809 - JAVA ADVANCED | DISRUPTIVE ARCHITECTURES: IOT, IOB & GENERATIVE IA
+### Lucas Lima RM 551253 - DevOps Tools & Cloud Computing | DISRUPTIVE ARCHITECTURES: IOT, IOB & GENERATIVE IA
+### Murilo Caumo RM 551247 - MASTERING RELATIONAL AND NON-RELATIONAL DATABASE
+### Pedro Henrique RM 551598 - ADVANCED BUSINESS DEVELOPMENT WITH .NET
 
 ## Diagrama
 
