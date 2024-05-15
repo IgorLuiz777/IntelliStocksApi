@@ -6,9 +6,8 @@ POST http://localhost:8080/produto
 Content-Type: application/json
 
 {
-    "nome": "Cerveja Puro Malte",
+    "nome": "ACerveja Puro Malte",
     "preco": 5.30,
-    "tipo": "Bebidas Alcoólicas",
     "descricao": "Unidade",
     "modelo": "350ml Lata",
     "marca": "Becks"

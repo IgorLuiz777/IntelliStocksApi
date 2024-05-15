@@ -2,74 +2,66 @@ package br.com.intellistocks.api.service;
 
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.PagedModel;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import br.com.intellistocks.api.models.produto.Produto;
-import br.com.intellistocks.api.models.produto.ProdutoDTO;
+import br.com.intellistocks.api.models.produto.DadosListagemProduto;
 import br.com.intellistocks.api.repository.ProdutoRepository;
 
 @Service
 public class ProdutoService {
 
-    private final ProdutoRepository produtoRepository;
+    @Autowired
+    ProdutoRepository produtoRepository;
 
-    public ProdutoService(ProdutoRepository produtoRepository) {
-        this.produtoRepository = produtoRepository;
-    }
+    @Autowired
+    PagedResourcesAssembler<DadosListagemProduto> pagedResourcesAssembler;
 
     public Produto createProduto(Produto produto) {
         return produtoRepository.save(produto);
     }
 
-    public List<ProdutoDTO> listProdutos() {
-        List<Produto> produtos = produtoRepository.findByAtivoTrue();
-        List<ProdutoDTO> produtoDTOs = new ArrayList<>();
-        for (Produto produto : produtos) {
-            produtoDTOs.add(new ProdutoDTO(produto));
+    public PagedModel<EntityModel<DadosListagemProduto>> listProdutos(String nome, Pageable pageable) {
+        Page<Produto> page;
+        if (nome != null && !nome.isEmpty()) {
+            page = produtoRepository.findByNome(nome, pageable);
+        } else {
+            page = produtoRepository.findAll(pageable);
         }
-        return produtoDTOs;
+        Page<DadosListagemProduto> pageDto = page.map(DadosListagemProduto::new);
+        return pagedResourcesAssembler.toModel(pageDto);
     }
 
-    public ResponseEntity<ProdutoDTO> readProdutoById(Long id) {
-        Produto produto = verifyProduto(id);
-        return ResponseEntity.ok(new ProdutoDTO(produto));
+    public EntityModel<DadosListagemProduto> readProdutoById(Long id) {
+        Produto produto = produtoRepository.findById(id)
+            .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Produto não encontrado!"));
+        DadosListagemProduto dadosProduto = new DadosListagemProduto(produto);
+        return dadosProduto.toEntityModel();
     }
-
-    public List<ProdutoDTO> listDisableProdutos() {
-        List<Produto> produtos = produtoRepository.findByAtivoFalse();
-        List<ProdutoDTO> produtoDTOs = new ArrayList<>();
-        for (Produto produto : produtos) {
-            produtoDTOs.add(new ProdutoDTO(produto));
-        }
-        return produtoDTOs;
-    }
+    
 
     public void disableProduto(Long id) {
-        produtoRepository.findById(id)
-                .ifPresent(produto -> {
-                    if (produto.getAtivo()) {
-                        produto.setAtivo(false);
-                        produtoRepository.save(produto);
-                    }
-                });
+        
+        if (!produtoRepository.existsById(id)) {
+            throw new ResponseStatusException(NOT_FOUND, "Produto não encontrado!");
+        }
+        produtoRepository.deleteById(id);
+
     }
 
     public Produto editProduto(Long id, Produto produto) {
-        verifyProduto(id);
+        
+        if (!produtoRepository.existsById(id)) {
+            throw new ResponseStatusException(NOT_FOUND, "Produto não encontrado!");
+        }    
         produto.setId(id);
         return produtoRepository.save(produto);
-    }
-
-    private Produto verifyProduto(Long id) {
-        Produto produto = produtoRepository.findByIdAndAtivoTrue(id);
-        if (produto == null) {
-            throw new ResponseStatusException(NOT_FOUND, "Produto não encontrado ou não está ativo");
-        }
-        return produto;
     }
 }

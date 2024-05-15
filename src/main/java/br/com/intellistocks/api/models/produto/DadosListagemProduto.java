@@ -1,5 +1,4 @@
 package br.com.intellistocks.api.models.produto;
-
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
@@ -10,51 +9,14 @@ import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.Link;
 
 import br.com.intellistocks.api.controller.ProdutoController;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Positive;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
-@Data
-@Entity
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode(callSuper = false)
-public class Produto extends EntityModel<Produto> {
+public record DadosListagemProduto(Long id, String nome, BigDecimal preco, String descricao, String modelo, String marca) {
     
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    public DadosListagemProduto(Produto produto) {
+        this(produto.getId(), produto.getNome(), produto.getPreco(), produto.getDescricao(), produto.getModelo(), produto.getMarca());
+    }
 
-    @NotBlank
-    private String nome;
-
-    @Positive
-    private BigDecimal preco;
-
-    //private TipoProduto TipoProduto;
-
-    @Column(length = 255)
-    private String descricao;
-
-    @NotBlank
-    private String modelo;
-
-    @NotBlank
-    private String marca;
-
-    @Builder.Default
-    private Boolean ativo = true;
-
-    public EntityModel<Produto> toEntityModel() {
+    public EntityModel<DadosListagemProduto> toEntityModel() {
         Link selfLink = linkTo(methodOn(ProdutoController.class).readProdutoById(id)).withSelfRel();
         Link deleteLink = linkTo(ProdutoController.class).slash(id).withRel("DELETE");
         Link getAllLink = linkTo(methodOn(ProdutoController.class).listProdutos(Pageable.unpaged(), null)).withRel("GET");
@@ -63,5 +25,6 @@ public class Produto extends EntityModel<Produto> {
     
         return EntityModel.of(this, selfLink, deleteLink, getAllLink, postLink, putLink);
     }
-
+    
+    
 }
