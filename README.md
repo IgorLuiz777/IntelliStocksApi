@@ -25,11 +25,11 @@ O software IntelliStocks é uma solução inovadora de gerenciamento de inventá
 
 ## Arquitetura
 
-![Camadas das arquiteturas](Intellistocks_camadas.jpg)
+![Camadas das arquiteturas](images/IntelliStocks_arquitetura.png)
 
 ## Diagrama
 
-![Diagrama de Classes](Intellistocks(2).png)
+![Diagrama de Classes](images/IntelliStocks_uml.png)
 
 
 ## Tarefas
@@ -45,9 +45,9 @@ O software IntelliStocks é uma solução inovadora de gerenciamento de inventá
 ## Como rodar
 # TO DO
 
-### VS Code <img src="visual-studio-code-icon.webp" alt="vscode-icon" width="20"/> - Primeiramente é necessário a extenssão: Extension Pack for Java ([link](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack))
-### IntelliJ <img src="intellij-idea.svg" alt="intelliJ-icon" width="20"/> -
-### Eclipse <img src="eclipse.svg" alt="eclipse-icon" width="20"/>  -
+### VS Code <img src="images/visual-studio-code-icon.webp" alt="vscode-icon" width="20"/> - Primeiramente é necessário a extenssão: Extension Pack for Java ([link](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack))
+### IntelliJ <img src="images/intellij-idea.svg" alt="intelliJ-icon" width="20"/> -
+### Eclipse <img src="images/eclipse.svg" alt="eclipse-icon" width="20"/>  -
 
 
 ## Documentação da API
