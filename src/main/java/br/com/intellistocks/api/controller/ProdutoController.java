@@ -61,4 +61,5 @@ public class ProdutoController {
     public void deleteProduto(@PathVariable Long id) {
         produtoService.disableProduto(id);
     }
+
 }

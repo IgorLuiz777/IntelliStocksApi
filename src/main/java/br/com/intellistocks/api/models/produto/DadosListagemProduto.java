@@ -10,10 +10,10 @@ import org.springframework.hateoas.Link;
 
 import br.com.intellistocks.api.controller.ProdutoController;
 
-public record DadosListagemProduto(Long id, String nome, BigDecimal preco, String descricao, String modelo, String marca) {
+public record DadosListagemProduto(Long id, String nome, String TipoProdutoNome , BigDecimal preco, String descricao, String modelo, String marca) {
     
     public DadosListagemProduto(Produto produto) {
-        this(produto.getId(), produto.getNome(), produto.getPreco(), produto.getDescricao(), produto.getModelo(), produto.getMarca());
+        this(produto.getId(), produto.getNome(), produto.getTipoProduto().getNome(), produto.getPreco(), produto.getDescricao(), produto.getModelo(), produto.getMarca());
     }
 
     public EntityModel<DadosListagemProduto> toEntityModel() {

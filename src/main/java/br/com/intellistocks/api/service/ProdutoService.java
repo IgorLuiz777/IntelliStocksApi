@@ -11,9 +11,11 @@ import org.springframework.hateoas.PagedModel;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import br.com.intellistocks.api.models.produto.Produto;
+import br.com.intellistocks.api.models.TipoProduto.TipoProduto;
 import br.com.intellistocks.api.models.produto.DadosListagemProduto;
+import br.com.intellistocks.api.models.produto.Produto;
 import br.com.intellistocks.api.repository.ProdutoRepository;
+import br.com.intellistocks.api.repository.TipoProdutoRepository;
 
 @Service
 public class ProdutoService {
@@ -22,11 +24,24 @@ public class ProdutoService {
     ProdutoRepository produtoRepository;
 
     @Autowired
+    TipoProdutoRepository tipoRepository;
+
+    @Autowired
     PagedResourcesAssembler<DadosListagemProduto> pagedResourcesAssembler;
 
     public Produto createProduto(Produto produto) {
+        TipoProduto tipoProduto = produto.getTipoProduto();
+        
+        if (tipoProduto != null && tipoProduto.getId() == null) {
+            tipoProduto = tipoRepository.save(tipoProduto);
+        }
+        produto.setTipoProduto(tipoProduto);
+        
         return produtoRepository.save(produto);
     }
+    
+
+    
 
     public PagedModel<EntityModel<DadosListagemProduto>> listProdutos(String nome, Pageable pageable) {
         Page<Produto> page;
