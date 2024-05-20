@@ -20,6 +20,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TipoProduto {
+
+    //TODO: FAZER EXCLUSÃO LÓGICA
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

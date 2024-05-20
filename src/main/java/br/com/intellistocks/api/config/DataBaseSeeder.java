@@ -46,6 +46,7 @@ public class DataBaseSeeder implements CommandLineRunner {
                 .descricao("Biscoito Recheado Chocolate e Baunilha")
                 .modelo("Original Oreo 270g")
                 .marca("Oreo")
+                .quantidade(30)
                 .build();
 
         Produto produto2 = Produto.builder()
@@ -56,6 +57,7 @@ public class DataBaseSeeder implements CommandLineRunner {
                 .descricao("Biscoito Recheado com Chocolate")
                 .modelo("BOLACHA BAUDUCCO 108G RECHEADA CHOCOLATE")
                 .marca("Bauducco")
+                .quantidade(50)
                 .build();
 
         Produto produto3 = Produto.builder()
@@ -66,6 +68,7 @@ public class DataBaseSeeder implements CommandLineRunner {
                 .descricao("Biscoito Recheado com Baunilha")
                 .modelo("Trakinas Baunilha 280g")
                 .marca("Trakinas")
+                .quantidade(23)
                 .build();
 
                 
@@ -77,6 +80,7 @@ public class DataBaseSeeder implements CommandLineRunner {
                 .descricao("Whisky Escocês Deluxe Buchanan's 750ml")
                 .modelo("12 anos 750ml")
                 .marca("Buchanan ́s")
+                .quantidade(12)
                 .build();
         pRepository.saveAll(List.of(produto1, produto2, produto3, produto4));
 

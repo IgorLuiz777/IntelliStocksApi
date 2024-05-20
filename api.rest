@@ -1,46 +1,59 @@
 GET http://localhost:8080/
-
 ###
-
+GET http://localhost:8080/produto
+###
+GET http://localhost:8080/tipoProduto
+###
 POST http://localhost:8080/produto
 Content-Type: application/json
 
 {
-    "nome": "ACerveja Puro Malte",
+    "nome": "Cerveja Puro Malte",
+    "tipoProduto": {
+        "id": 2
+    },
     "preco": 5.30,
     "descricao": "Unidade",
     "modelo": "350ml Lata",
-    "marca": "Becks"
+    "marca": "Becks",
+    "quantidade": 30
 }
-
 ###
+POST http://localhost:8080/tipoProduto
+Content-Type: application/json
 
-GET http://localhost:8080/produto
-
-
+{
+    "nome": "salagadinho/aperitivos"
+}
 ###
-
+###
 GET http://localhost:8080/produto/1
-
 ###
-
-PUT http://localhost:8080/produto/1
+GET http://localhost:8080/tipoProduto/1
+###
+PUT http://localhost:8080/produto/5
 Content-Type: application/json
 
 {
     "nome": "Cerveja Puro Malte",
-    "preco": 5.20,
-    "tipo": "Bebidas Alcoólicas",
+    "tipoProduto": {
+        "id": 2
+    },
+    "preco": 3.30,
     "descricao": "Unidade",
     "modelo": "350ml Lata",
-    "marca": "Becks"
+    "marca": "Becks",
+    "quantidade": 30
 }
+###
+PUT http://localhost:8080/tipoProduto/4
+Content-Type: application/json
 
+{
+    "nome": "doces"
+}
 ###
 DELETE http://localhost:8080/produto/1
-
 ###
-
-GET http://localhost:8080/produto/disable
-
+DELETE http://localhost:8080/tipoProduto/3
 ###
