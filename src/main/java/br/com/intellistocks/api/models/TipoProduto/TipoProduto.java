@@ -10,22 +10,25 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class TipoProduto {
     
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @NotBlank
     private String nome;
 
     @OneToMany(mappedBy = "tipoProduto")
-    List<Produto> produtos;
+    private List<Produto> produtos;
 
 }

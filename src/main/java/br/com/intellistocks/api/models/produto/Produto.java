@@ -18,7 +18,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
@@ -36,7 +35,8 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 public class Produto extends EntityModel<Produto> {
     
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank
@@ -60,6 +60,8 @@ public class Produto extends EntityModel<Produto> {
 
     @Builder.Default
     private Boolean ativo = true;
+
+    private Integer quantidade;
 
     public EntityModel<Produto> toEntityModel() {
         Link selfLink = linkTo(methodOn(ProdutoController.class).readProdutoById(id)).withSelfRel();
