@@ -15,7 +15,7 @@ import io.swagger.v3.oas.annotations.info.License;
 @SpringBootApplication
 @OpenAPIDefinition(
     info = @Info(
-        title = "BarberTime API",
+        title = "IntelliStocks API",
         version = "2.0",
         description = "API da aplicação IntelliStocks - Sistema de iventário inteligente",
         contact = @Contact(

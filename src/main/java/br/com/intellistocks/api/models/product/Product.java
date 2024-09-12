@@ -1,18 +1,18 @@
-package br.com.intellistocks.api.models.produto;
+package br.com.intellistocks.api.models.product;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import java.math.BigDecimal;
 
+import br.com.intellistocks.api.models.typeProduct.TypeProduct;
 import org.springframework.data.domain.Pageable;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.Link;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import br.com.intellistocks.api.controller.ProdutoController;
-import br.com.intellistocks.api.models.TipoProduto.TipoProduto;
+import br.com.intellistocks.api.controller.ProductController;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -33,44 +33,41 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class Produto extends EntityModel<Produto> {
-    
+public class Product extends EntityModel<Product> {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank
-    private String nome;
+    private String name;
 
     @Positive
-    private BigDecimal preco;
+    private BigDecimal price;
 
     @ManyToOne
     @JsonBackReference
-    private TipoProduto tipoProduto;
+    private TypeProduct typeProduct;
 
     @Column(length = 255)
-    private String descricao;
+    private String desc;
 
     @NotBlank
-    private String modelo;
+    private String model;
 
     @NotBlank
-    private String marca;
+    private String brand;
 
-    @Builder.Default
-    private Boolean ativo = true;
+    @Positive
+    private Integer quantity;
 
-    private Integer quantidade;
+    public EntityModel<Product> toEntityModel() {
+        Link selfLink = linkTo(methodOn(ProductController.class).readProductById(id)).withSelfRel();
+        Link deleteLink = linkTo(ProductController.class).slash(id).withRel("DELETE");
+        Link getAllLink = linkTo(methodOn(ProductController.class).listProduct(Pageable.unpaged(), null)).withRel("GET");
+        Link postLink = linkTo(methodOn(ProductController.class).createProduct(null)).withRel("POST");
+        Link putLink = linkTo(methodOn(ProductController.class).editProduct(id, null)).withRel("PUT");
 
-    public EntityModel<Produto> toEntityModel() {
-        Link selfLink = linkTo(methodOn(ProdutoController.class).readProdutoById(id)).withSelfRel();
-        Link deleteLink = linkTo(ProdutoController.class).slash(id).withRel("DELETE");
-        Link getAllLink = linkTo(methodOn(ProdutoController.class).listProdutos(Pageable.unpaged(), null)).withRel("GET");
-        Link postLink = linkTo(methodOn(ProdutoController.class).createProduto(null)).withRel("POST");
-        Link putLink = linkTo(methodOn(ProdutoController.class).editProduto(id, null)).withRel("PUT");
-    
         return EntityModel.of(this, selfLink, deleteLink, getAllLink, postLink, putLink);
     }
-
 }

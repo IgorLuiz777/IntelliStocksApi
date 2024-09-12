@@ -1,7 +1,6 @@
 package br.com.intellistocks.api.config;
 
 import org.springdoc.core.models.GroupedOpenApi;
-import org.springdoc.core.properties.SwaggerUiConfigParameters;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -9,10 +8,11 @@ import org.springframework.context.annotation.Configuration;
 public class SpringdocConfig {
 
     @Bean
-    public GroupedOpenApi customOpenAPI(SwaggerUiConfigParameters swaggerUiConfigParameters) {
+    public GroupedOpenApi productApi() {
         return GroupedOpenApi.builder()
                 .group("produtos")
                 .packagesToScan("br.com.intellistocks.api.controller")
+                .pathsToMatch("/product/**", "/typeProduct/**")
                 .build();
     }
 }

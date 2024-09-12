@@ -1,8 +1,8 @@
-package br.com.intellistocks.api.models.TipoProduto;
+package br.com.intellistocks.api.models.typeProduct;
 
 import java.util.List;
 
-import br.com.intellistocks.api.models.produto.Produto;
+import br.com.intellistocks.api.models.product.Product;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,18 +19,16 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class TipoProduto {
+public class TypeProduct {
 
-    //TODO: FAZER EXCLUSÃO LÓGICA
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank
-    private String nome;
+    private String name;
 
-    @OneToMany(mappedBy = "tipoProduto")
-    private List<Produto> produtos;
+    @OneToMany(mappedBy = "typeProduct")
+    private List<Product> products;
 
 }
