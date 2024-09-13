@@ -1,6 +1,6 @@
 package br.com.intellistocks.api.service;
 
-import br.com.intellistocks.api.models.typeProduct.TypeProduct;
+import br.com.intellistocks.api.models.product.TypeProduct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

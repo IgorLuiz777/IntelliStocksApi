@@ -1,6 +1,6 @@
 package br.com.intellistocks.api.repository;
 
-import br.com.intellistocks.api.models.typeProduct.TypeProduct;
+import br.com.intellistocks.api.models.product.TypeProduct;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

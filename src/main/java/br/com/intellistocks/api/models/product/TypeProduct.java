@@ -1,8 +1,7 @@
-package br.com.intellistocks.api.models.typeProduct;
+package br.com.intellistocks.api.models.product;
 
 import java.util.List;
 
-import br.com.intellistocks.api.models.product.Product;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
