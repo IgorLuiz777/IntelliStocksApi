@@ -10,14 +10,14 @@ CREATE TABLE stock_moviment (
                                 product_id BIGINT,
                                 quantity INT NOT NULL CHECK (quantity > 0),
                                 date_moviment DATE,
-                                type_moviment VARCHAR(10) NOT NULL CHECK (type_moviment IN ('ENTRADA', 'SAIDA')),
+                                type_moviment VARCHAR(10) NOT NULL CHECK (type_moviment IN ('INPUT', 'OUTPUT')),
                                 FOREIGN KEY (product_id) REFERENCES product(id)
 );
 
 INSERT INTO stock_moviment (product_id, quantity, date_moviment, type_moviment)
 VALUES
-    (1, 100, '2024-09-01', 'ENTRADA'),
-    (2, 50, '2024-09-02', 'ENTRADA'),
-    (3, 75, '2024-09-03', 'SAIDA'),
-    (4, 30, '2024-09-04', 'SAIDA'),
-    (5, 20, '2024-09-05', 'SAIDA');
+    (1, 100, '2024-09-01', 'INPUT'),
+    (2, 50, '2024-09-02', 'INPUT'),
+    (3, 75, '2024-09-03', 'OUTPUT'),
+    (4, 30, '2024-09-04', 'OUTPUT'),
+    (5, 20, '2024-09-05', 'OUTPUT');
