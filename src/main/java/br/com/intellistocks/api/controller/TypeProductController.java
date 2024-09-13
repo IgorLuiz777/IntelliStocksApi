@@ -26,7 +26,7 @@ import org.springdoc.core.annotations.ParameterObject;
 
 @RestController
 @RequestMapping("/typeProduct")
-@Tag(name = "TipoProduto", description = "Endpoints para operações relacionadas a tipos de produtos")
+@Tag(name = "TypeProduct", description = "Endpoints para operações relacionadas a tipos de produtos")
 public class TypeProductController {
 
     @Autowired

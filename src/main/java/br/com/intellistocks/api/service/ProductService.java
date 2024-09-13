@@ -47,20 +47,20 @@ public class ProductService {
 
     public EntityModel<ProductListResponse> readProductById(Long id) {
         Product product = productRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não encontrado!"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Product not found!"));
         return new ProductListResponse(product).toEntityModel();
     }
 
     public void deleteProduct(Long id) {
         if (!productRepository.existsById(id)) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não encontrado!");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Product not found!");
         }
         productRepository.deleteById(id);
     }
 
     public Product editProduct(Long id, Product product) {
         if (!productRepository.existsById(id)) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não encontrado!");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Product not found!");
         }
         product.setId(id);
         return productRepository.save(product);

@@ -34,6 +34,8 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 public class Product extends EntityModel<Product> {
 
+    // TODO: CRIAR DTO PARA MOSTRAR APENAS O NOME DO TypeProduct
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

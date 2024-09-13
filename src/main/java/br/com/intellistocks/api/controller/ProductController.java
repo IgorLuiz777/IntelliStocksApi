@@ -32,7 +32,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("/product")
-@Tag(name = "Produto", description = "Endpoints para operações relacionadas a produtos")
+@Tag(name = "Product", description = "Endpoints para operações relacionadas a produtos")
 public class ProductController {
 
     @Autowired

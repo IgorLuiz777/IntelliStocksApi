@@ -12,7 +12,7 @@ public class SpringdocConfig {
         return GroupedOpenApi.builder()
                 .group("produtos")
                 .packagesToScan("br.com.intellistocks.api.controller")
-                .pathsToMatch("/product/**", "/typeProduct/**")
+                .pathsToMatch("/product/**", "/typeProduct/**", "/stockMoviment/**")
                 .build();
     }
 }
