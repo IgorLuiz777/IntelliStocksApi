@@ -1,9 +1,8 @@
 package br.com.intellistocks.api.models.report;
 
 import br.com.intellistocks.api.models.product.Product;
-import br.com.intellistocks.api.models.stock.StockMoviment;
+import br.com.intellistocks.api.models.stock.StockMovement;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -29,7 +28,7 @@ public class Report {
     private Product product;
 
     @OneToMany
-    private List<StockMoviment> movimentacoes;
+    private List<StockMovement> movements;
 
     private String delimiter;
 

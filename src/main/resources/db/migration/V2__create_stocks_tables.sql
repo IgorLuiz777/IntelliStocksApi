@@ -5,16 +5,16 @@ CREATE TABLE minimum_stock (
                                FOREIGN KEY (product_id) REFERENCES product(id)
 );
 
-CREATE TABLE stock_moviment (
+CREATE TABLE stock_movement (
                                 id BIGINT AUTO_INCREMENT PRIMARY KEY,
                                 product_id BIGINT,
                                 quantity INT NOT NULL CHECK (quantity > 0),
-                                date_moviment DATE,
-                                type_moviment VARCHAR(10) NOT NULL CHECK (type_moviment IN ('INPUT', 'OUTPUT')),
+                                date_movement DATE,
+                                type_movement VARCHAR(10) NOT NULL CHECK (type_movement IN ('INPUT', 'OUTPUT')),
                                 FOREIGN KEY (product_id) REFERENCES product(id)
 );
 
-INSERT INTO stock_moviment (product_id, quantity, date_moviment, type_moviment)
+INSERT INTO stock_movement (product_id, quantity, date_movement, type_movement)
 VALUES
     (1, 100, '2024-09-01', 'INPUT'),
     (2, 50, '2024-09-02', 'INPUT'),

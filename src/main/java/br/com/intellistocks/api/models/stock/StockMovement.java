@@ -2,7 +2,6 @@ package br.com.intellistocks.api.models.stock;
 
 import br.com.intellistocks.api.models.product.Product;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
@@ -10,7 +9,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -18,7 +16,7 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class StockMoviment {
+public class StockMovement {
 
     // TODO: CRIAR DTO PARA MOSTRAR APENAS O NOME E QUANTITY DO Product
 
@@ -33,16 +31,16 @@ public class StockMoviment {
     @Positive
     private Integer quantity;
 
-    private LocalDateTime dateMoviment;
+    private LocalDateTime dateMovement;
 
     @NotNull
     @Enumerated(EnumType.STRING)
-    private TypeMoviment typeMoviment;
+    private TypeMovement typeMovement;
 
     // A anotação permite executar ações antes de persistir no BD
     @PrePersist
     public void prePersist() {
-        dateMoviment = LocalDateTime.now();
+        dateMovement = LocalDateTime.now();
     }
 
 }
