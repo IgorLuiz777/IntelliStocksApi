@@ -2,6 +2,7 @@ package br.com.intellistocks.api.service;
 
 import br.com.intellistocks.api.models.product.Product;
 import br.com.intellistocks.api.models.stock.StockMovement;
+import br.com.intellistocks.api.models.stock.TypeMovement;
 import br.com.intellistocks.api.repository.ProductRepository;
 import br.com.intellistocks.api.repository.StockMovementRepository;
 import jakarta.transaction.Transactional;
@@ -31,19 +32,19 @@ public class StockMovementService {
 
         Integer quantity = product.getQuantity() != null ? product.getQuantity() : 0;
 
-        if (stockMovement.getTypeMovement().toString() == "INPUT") {
+        if (stockMovement.getTypeMovement() == TypeMovement.INPUT) {
             product.setQuantity(quantity + stockMovement.getQuantity());
-        } else if (stockMovement.getTypeMovement().toString() == "OUTPUT") {
+        } else if (stockMovement.getTypeMovement() == TypeMovement.OUTPUT) {
             if (quantity < stockMovement.getQuantity()) {
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The product quantity should be bigger then" +
-                        " the movement.");
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Insufficient product quantity.");
             }
             product.setQuantity(quantity - stockMovement.getQuantity());
         }
 
         productRepository.save(product);
-        stockMovementRepository.save(stockMovement);
-        return stockMovement;
+
+        stockMovement.setProduct(product);
+        return stockMovementRepository.save(stockMovement);
     }
 
 

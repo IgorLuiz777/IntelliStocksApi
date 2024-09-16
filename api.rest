@@ -8,22 +8,22 @@ POST http://localhost:8080/product
 Content-Type: application/json
 
 {
-    "nome": "Cerveja Puro Malte",
+    "name": "Cerveja Puro Malte",
     "typeProduct": {
         "id": 2
     },
-    "preco": 5.30,
-    "descricao": "Unidade",
-    "modelo": "350ml Lata",
-    "marca": "Becks",
-    "quantidade": 30
+    "price": 5.30,
+    "desc": "Unidade",
+    "model": "350ml Lata",
+    "brand": "Becks",
+    "quantity": 30
 }
 ###
 POST http://localhost:8080/typeProduct
 Content-Type: application/json
 
 {
-    "nome": "salagadinho/aperitivos"
+    "name": "salagadinho/aperitivos"
 }
 ###
 ###
@@ -35,25 +35,43 @@ PUT http://localhost:8080/product/5
 Content-Type: application/json
 
 {
-    "nome": "Cerveja Puro Malte",
+    "name": "Cerveja Puro Malte",
     "typeProduct": {
         "id": 2
     },
-    "preco": 3.30,
-    "descricao": "Unidade",
-    "modelo": "350ml Lata",
-    "marca": "Becks",
-    "quantidade": 30
+    "price": 3.50,
+    "desc": "Unidade",
+    "model": "350ml Lata",
+    "brand": "Becks",
+    "quantity": 30
 }
 ###
-PUT http://localhost:8080/typeProduct/4
+PUT http://localhost:8080/typeProduct/2
 Content-Type: application/json
 
 {
-    "nome": "doces"
+    "name": "Produtos para Casa"
 }
 ###
 DELETE http://localhost:8080/product/1
 ###
 DELETE http://localhost:8080/typeProduct/3
 ###
+POST http://localhost:8080/stockMovement
+Content-Type: application/json
+
+{
+    "product": {
+        "id": 4
+    },
+    "quantity": 50,
+    "typeMovement": "INPUT"
+}
+###
+GET http://localhost:8080/stockMovement
+###
+GET http://localhost:8080/stockMovement/2
+###
+DELETE http://localhost:8080/stockMovement/2
+
+

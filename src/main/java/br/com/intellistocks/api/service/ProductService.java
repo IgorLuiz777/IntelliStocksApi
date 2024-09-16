@@ -1,5 +1,7 @@
 package br.com.intellistocks.api.service;
 
+import br.com.intellistocks.api.models.stock.StockMovement;
+import br.com.intellistocks.api.repository.StockMovementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -24,6 +26,9 @@ public class ProductService {
 
     @Autowired
     TypeProductRepository typeProductRepository;
+
+    @Autowired
+    StockMovementRepository stockMovementRepository;
 
     @Autowired
     PagedResourcesAssembler<ProductListResponse> pagedResourcesAssembler;
@@ -55,6 +60,7 @@ public class ProductService {
         if (!productRepository.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Product not found!");
         }
+        stockMovementRepository.deleteById(id);
         productRepository.deleteById(id);
     }
 
