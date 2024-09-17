@@ -6,10 +6,16 @@ O projeto **IntelliStocks** não só revolucionará o gerenciamento de inventár
 
 Recursos como **alertas automatizados via email** e um **painel de controle centralizado** proporcionarão ainda mais controle e organização. Dessa forma, o **IntelliStocks** se tornará uma ferramenta essencial tanto para a **gestão operacional** quanto para o **planejamento estratégico** das empresas.
 
-Confira o vídeo de entrega da Spring 3, contendo objetivos do projeto e :
+Confira o vídeo de entrega da Spring 3, contendo objetivos do projeto e :[Link do vídeo](https://youtu.be/D1EEw_oR_Ec)
 
 Confira o vídeo do pitch do nosso projeto no link abaixo:  
 [Assista ao Pitch](https://youtu.be/lpCFoGbBxmY)
+
+Projeto C#: [https://github.com/IgorLuiz777/IntelliStocks.NET](https://github.com/IgorLuiz777/IntelliStocks.NET)
+
+Projeto Mobile: [https://github.com/lucasrychlicki/IntelliStocks](https://github.com/lucasrychlicki/IntelliStocks)
+
+Projeto IA: [https://github.com/CastanhoPh/IntelliStocksAI](https://github.com/CastanhoPh/IntelliStocksAI)
 
 ## Sprints
 
