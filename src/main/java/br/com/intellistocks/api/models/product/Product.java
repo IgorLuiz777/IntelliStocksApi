@@ -5,6 +5,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import java.math.BigDecimal;
 
+import jakarta.validation.constraints.NotNull;
 import org.springframework.data.domain.Pageable;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.Link;
@@ -40,7 +41,7 @@ public class Product extends EntityModel<Product> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+    @NotNull
     private String name;
 
     @Positive
