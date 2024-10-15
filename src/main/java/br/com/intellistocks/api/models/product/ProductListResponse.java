@@ -10,11 +10,11 @@ import org.springframework.hateoas.Link;
 
 import br.com.intellistocks.api.controller.ProductController;
 
-public record ProductListResponse(Long id, String name, String typeProductName, BigDecimal price, String desc,
+public record ProductListResponse(Long id, String name, String typeProductName, Long typeProductId,BigDecimal price, String desc,
                                   String model, String brand, Integer quantity) {
     
     public ProductListResponse(Product product) {
-        this(product.getId(), product.getName(), product.getTypeProduct().getName(), product.getPrice(),
+        this(product.getId(), product.getName(), product.getTypeProduct().getName(), product.getTypeProduct().getId(),product.getPrice(),
                 product.getDesc(), product.getModel(), product.getBrand(), product.getQuantity());
     }
 
