@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.intellistocks.api.models.product.ProductListResponse;
+import br.com.intellistocks.api.models.product.ProductMovementResponse;
 import br.com.intellistocks.api.service.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -85,6 +86,11 @@ public class ProductController {
     public EntityModel<ProductListResponse> readProductById(
             @Parameter(description = "ID do produto a ser buscado") @PathVariable Long id) {
         return productService.readProductById(id);
+    }
+
+    @GetMapping("movements/{id}")
+    public ProductMovementResponse getProductMovements(@PathVariable Long id) {
+        return productService.getMovementsById(id);
     }
 
     @PutMapping("/{id}")

@@ -2,6 +2,9 @@ package br.com.intellistocks.api.service;
 
 import br.com.intellistocks.api.models.stock.StockMovement;
 import br.com.intellistocks.api.repository.StockMovementRepository;
+
+import javax.naming.NameNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,6 +17,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import br.com.intellistocks.api.models.product.TypeProduct;
 import br.com.intellistocks.api.models.product.ProductListResponse;
+import br.com.intellistocks.api.models.product.ProductMovementResponse;
 import br.com.intellistocks.api.models.product.Product;
 import br.com.intellistocks.api.repository.ProductRepository;
 import br.com.intellistocks.api.repository.TypeProductRepository;
@@ -55,6 +59,14 @@ public class ProductService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Product not found!"));
         return new ProductListResponse(product).toEntityModel();
     }
+
+    public ProductMovementResponse getMovementsById(Long id) {
+        Product product = productRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Product not found"));
+        
+        return new ProductMovementResponse(product);
+    }
+    
 
     public void deleteProduct(Long id) {
         if (!productRepository.existsById(id)) {

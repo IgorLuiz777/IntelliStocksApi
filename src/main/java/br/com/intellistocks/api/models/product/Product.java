@@ -4,6 +4,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import jakarta.validation.constraints.NotNull;
 import org.springframework.data.domain.Pageable;
@@ -13,12 +14,16 @@ import org.springframework.hateoas.Link;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import br.com.intellistocks.api.controller.ProductController;
+import br.com.intellistocks.api.models.stock.StockMovement;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
@@ -62,6 +67,9 @@ public class Product extends EntityModel<Product> {
 
     @Positive
     private Integer quantity;
+
+    @OneToMany(mappedBy = "product", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    private List<StockMovement> stockMovement;
 
     public EntityModel<Product> toEntityModel() {
         Link selfLink = linkTo(methodOn(ProductController.class).readProductById(id)).withSelfRel();
