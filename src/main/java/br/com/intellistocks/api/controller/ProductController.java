@@ -1,6 +1,7 @@
 package br.com.intellistocks.api.controller;
 
 import br.com.intellistocks.api.models.product.Product;
+import com.opencsv.CSVWriter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.springdoc.core.annotations.ParameterObject;
@@ -10,7 +11,10 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.PagedModel;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,6 +34,9 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+
+import java.io.IOException;
+import java.io.StringWriter;
 
 @RestController
 @RequestMapping("/product")
@@ -91,6 +98,38 @@ public class ProductController {
     @GetMapping("movements/{id}")
     public ProductMovementResponse getProductMovements(@PathVariable Long id) {
         return productService.getMovementsById(id);
+    }
+
+    @GetMapping("/{id}/csv")
+    public ResponseEntity<byte[]> exportProductMovementsToCsv(@PathVariable Long id) throws IOException {
+        ProductMovementResponse productMovement = productService.getMovementsById(id);
+
+        StringWriter stringWriter = new StringWriter();
+        CSVWriter csvWriter = new CSVWriter(stringWriter);
+
+        String[] header = { "ID", "Nome do Produto", "Quantidade Movimentada", "Data Movimentação" };
+        csvWriter.writeNext(header);
+
+        productMovement.movements().forEach(movement -> {
+            String[] data = {
+                    String.valueOf(movement.getProduct().getId()),
+                    movement.getProduct().getName(),
+                    String.valueOf(movement.getQuantity()),
+                    String.valueOf(movement.getDateMovement())
+            };
+            csvWriter.writeNext(data);
+        });
+
+        csvWriter.close();
+        String csvOutput = stringWriter.toString();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=product_movements.csv");
+        headers.setContentType(MediaType.parseMediaType("text/csv"));
+
+        return ResponseEntity.ok()
+                .headers(headers)
+                .body(csvOutput.getBytes());
     }
 
     @PutMapping("/{id}")
