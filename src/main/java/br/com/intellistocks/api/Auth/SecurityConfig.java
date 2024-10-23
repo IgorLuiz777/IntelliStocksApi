@@ -21,6 +21,9 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.GET, "/product/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/stockMovement/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/typeProduct/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/docs/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/swagger-ui/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/v3/api-docs/**").permitAll()
                 .anyRequest().authenticated()
         );
         http.addFilterBefore(authorizationFilter, UsernamePasswordAuthenticationFilter.class);
