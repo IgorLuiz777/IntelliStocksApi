@@ -6,7 +6,7 @@ O projeto **IntelliStocks** não só revolucionará o gerenciamento de inventár
 
 Recursos como **alertas automatizados via email** e um **painel de controle centralizado** proporcionarão ainda mais controle e organização. Dessa forma, o **IntelliStocks** se tornará uma ferramenta essencial tanto para a **gestão operacional** quanto para o **planejamento estratégico** das empresas.
 
-Confira o vídeo de entrega da Spring 3, contendo objetivos do projeto e :[Link do vídeo](https://youtu.be/D1EEw_oR_Ec)
+### Confira o vídeo de entrega da Spring 4, contendo objetivos do projeto e :[Link do vídeo](https://youtu.be/89R75nuoB9E)
 
 Confira o vídeo do pitch do nosso projeto no link abaixo:  
 [Assista ao Pitch](https://youtu.be/lpCFoGbBxmY)
@@ -60,8 +60,8 @@ todos contribuem em todas as disciplinas e para o projeto como um todo.
 - [x] CRUD Produto
 - [x] CRUD TipoProduto
 - [x] CRUD Estoque
-- [ ] Geração do Relatório
-- [ ] Autenticação + Usuário
+- [x] Integração com a IA
+- [x] Autenticação + Usuário
 - [ ] Refatoramento
 - [x] Documentação
 
