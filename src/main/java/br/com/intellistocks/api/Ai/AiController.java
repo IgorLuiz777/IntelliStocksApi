@@ -1,6 +1,8 @@
 package br.com.intellistocks.api.Ai;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,15 +12,19 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 @RequestMapping("/ai")
 public class AiController {
     @Autowired
     private AiService aiService;
+    @Qualifier("messageSource")
+    @Autowired
+    private MessageSource messageSource;
 
     @PostMapping("/predict")
-    public ResponseEntity<String> sentCsv(@RequestParam("file") MultipartFile file) {
+    public ResponseEntity<String> sentCsv(@RequestParam("file") MultipartFile file, Locale locale) {
         try {
             File tempFile = convertMultipartFileToFile(file);
 
@@ -26,10 +32,12 @@ public class AiController {
 
             tempFile.delete();
 
-            return ResponseEntity.ok("Csv sent to queue RabbitMQ.");
+            String successMessage = messageSource.getMessage("predict.Ok", null, locale);
+            return ResponseEntity.ok(successMessage);
         } catch (IOException e) {
             e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error to process the file.");
+            String errorMessage = messageSource.getMessage("predict.Error", null, locale);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorMessage);
         }
     }
 
