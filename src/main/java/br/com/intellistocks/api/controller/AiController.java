@@ -1,5 +1,7 @@
-package br.com.intellistocks.api.Ai;
+package br.com.intellistocks.api.controller;
 
+import br.com.intellistocks.api.Ai.AiService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
@@ -16,6 +18,7 @@ import java.util.Locale;
 
 @RestController
 @RequestMapping("/ai")
+@Tag(name = "AI", description = "Endpoints relacionados a IA")
 public class AiController {
     @Autowired
     private AiService aiService;

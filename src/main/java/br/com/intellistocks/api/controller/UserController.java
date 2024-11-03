@@ -3,6 +3,7 @@ package br.com.intellistocks.api.controller;
 import java.util.List;
 import java.util.Optional;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,7 @@ import br.com.intellistocks.api.service.UserService;
 
 @RestController
 @RequestMapping("user")
+@Tag(name = "User", description = "Endpoints relacionados ao Usuário")
 public class UserController {
     
     @Autowired
