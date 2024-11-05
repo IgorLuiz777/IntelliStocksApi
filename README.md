@@ -43,7 +43,15 @@ Projeto IA: [https://github.com/CastanhoPh/IntelliStocksAI](https://github.com/C
 - **Lucas Lima (RM 551253)** - Mobile Application Development | DevOps Tools & Cloud Computing
 - **Murilo Caumo (RM 551247)** - Mastering Relational and Non-Relational Databases
 - **Pedro Henrique (RM 551598)** - Disruptive Architectures: IoT, IoB & Generative AI
- 
+
+### SPRINT 4
+#### Equipe:
+- **Gustavo Monte (RM 551601)** - Compliance, Quality Assurance & Tests
+- **Igor Luiz (RM 99809)** - Java Advanced | Advanced Business Development with .NET
+- **Lucas Lima (RM 551253)** - Mobile Application Development | DevOps Tools & Cloud Computing
+- **Murilo Caumo (RM 551247)** - Mastering Relational and Non-Relational Databases
+- **Pedro Henrique (RM 551598)** - Disruptive Architectures: IoT, IoB & Generative AI
+
 **Nota:** Embora cada membro tenha responsabilidades específicas, 
 todos contribuem em todas as disciplinas e para o projeto como um todo.
 
@@ -59,10 +67,12 @@ todos contribuem em todas as disciplinas e para o projeto como um todo.
 
 - [x] CRUD Produto
 - [x] CRUD TipoProduto
-- [x] CRUD Estoque
+- [x] CRUD Movimentação
 - [x] Integração com a IA
+- [x] Geração de CSV
 - [x] Autenticação + Usuário
-- [ ] Refatoramento
+- [x] Mensageria - RabbitMQ
+- [ ] Refatoração
 - [x] Documentação
 
 ## Como rodar
